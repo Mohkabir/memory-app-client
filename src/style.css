@@ -176,6 +176,7 @@ img {
   }
   .wrapper {
     width: 90%;
+    max-width: 1400px;
   }
   .head h2 {
     font-size: 1.5em;

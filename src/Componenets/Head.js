@@ -3,6 +3,8 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/actions/AuthAction';
 
+import profile from "../images/profile.png"
+
 const Head = () => {
 
   const isLogin = true;
@@ -15,6 +17,7 @@ const Head = () => {
   const userdata = localStorage.getItem("auth")? JSON.parse(localStorage.getItem("auth")):null ;
   const [user, setUser] = useState(userdata);
 
+  console.log(userdata, "userdata log");
 
   const logOut = () => {
     dispatch(logout());
@@ -24,13 +27,6 @@ const Head = () => {
 
    useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("auth")));
-
-    // if(!user){
-    //   history.push("/auth");
-    // }else{
-
-    // }
-
    }, [auth, location])
   
   return (
@@ -46,8 +42,8 @@ const Head = () => {
             {
               user ?(
                 <div className="cursor-pointer">
-                  <span>{user?.profile?.givenName} </span>
-                  <img className="inline" style={{borderRadius: "50px", width:"50px"}} src={user?.profile?.imageUrl} alt={user?.givenName} />
+                  <span>{user?.profile?.givenName ? user?.profile?.givenName : userdata.result.name} </span>
+                  <img className="inline" style={{borderRadius: "50px", width:"50px"}} src={user.profile?.imageUrl ? user.profile.imageUrl : profile } alt={user?.givenName} />
                 </div>
               ):""
             }

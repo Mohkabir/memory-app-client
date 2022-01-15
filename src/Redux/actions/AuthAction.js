@@ -4,16 +4,12 @@ import { loginApi, signupApi } from "../../Api/index";
 
 
 export const auth = (authInfo, history) => (dispatch) => {
-  console.log(authInfo);
   try {
     dispatch({
       type: actiontypes.AUTH,
       payload: authInfo
     })
-
-    console.log("successful", authInfo)
-    history.push("/home");
-
+    window.location.reload();
   } catch (error) {
     console.log(error);
   }
@@ -37,7 +33,6 @@ export const logIn = (FormData, history) => async(dispatch) => {
     
     window.location.reload();
   } catch (error) {
-    console.log("log in error", error.response);
     console.log("log in error", error.msg);
   }
 }

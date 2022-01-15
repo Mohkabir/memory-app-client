@@ -38,9 +38,8 @@ const Auth = () => {
 
     const profile = res?.profileObj;
     const token = res?.tokenId;
-
     dispatch(auth({profile, token}, history));
-    history.push("home");
+    
   } 
 
   const failureGoogle = (error) => {
