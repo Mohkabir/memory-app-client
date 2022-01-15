@@ -13,22 +13,18 @@ const Posts = () => {
     <div className="home_box1">
 
       {
-        posts.length < 1?(
-          <div>
-            no post
-          </div>
-        ): !posts.length && (
+        posts.length === 0 ? (
           <Spinner animation="border" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
+        ): (
+          <div className="row w-100 p-0">
+            { posts.map((post, index) => (
+                <Post post={post} key={index}/>
+            ))}
+          </div>
         )
       }
-    
-      <div className="row w-100 p-0">
-        { posts.map((post, index) => (
-            <Post post={post} key={index}/>
-        ))}
-      </div>
     </div>
   )
 }

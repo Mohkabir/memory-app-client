@@ -86,8 +86,8 @@ const Form = () => {
       onChange={(e) => setformData({ ...formData, message: e.target.value})} 
       value={formData.message} required />
       
-        <div className="position-relative">
-          <span className="w-full block p-2 bg-blue-700 text-white text-center text-xs">{imgname? imgname:"Select Memory Image"} </span>
+        <div className="position-relative border border-2 my-1 py-2" style={{ background: "#5FC2FF", color:"black", fontWeight:"600"}}>
+          <span className="w-full block p-2 text-center text-xs">{imgname? imgname:"Select Memory Image"} </span>
 
           <div className="position-absolute fixed-top opacity_none">
           <FileBase64 
@@ -97,7 +97,7 @@ const Form = () => {
         </div>
         </div>
 
-      <input type="submit" value="submit" className="block bg-blue-800 rounded py-1 px-2 my-2 border-2 border-white text-xs" style={{background:"grey", color:"white"}} />
+      <input type="submit" value="submit" className="submit block rounded py-1 px-2 my-2 "/>
     </form>
     </div>
   )

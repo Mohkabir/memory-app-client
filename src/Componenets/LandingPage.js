@@ -7,7 +7,6 @@ const LandingPage = () => {
 
   const [user, setUser] = useState(localStorage.getItem("auth")? JSON.parse(localStorage.getItem("auth")): null );
 
-
   return (
     <div className="landingpage text-center py-3">
         <h2 className="my-md-3">Welcome To The Memory Creation App</h2>

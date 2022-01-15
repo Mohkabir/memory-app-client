@@ -101,6 +101,18 @@ img {
   background-color: #141450;
 }
 
+.submit {
+  background-color: grey;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  text-transform: capitalize;
+}
+
+.submit:hover {
+  background-color: #5a5656;
+}
+
 .card_custom {
   background-color: #ffffff;
   border-radius: 15px;
@@ -176,7 +188,6 @@ img {
   }
   .wrapper {
     width: 90%;
-    max-width: 1400px;
   }
   .head h2 {
     font-size: 1.5em;
