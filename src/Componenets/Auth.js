@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import googlelogo from "../images/googlelogo.jpg";
 import GoogleLogin from 'react-google-login';
 // import Input from './Input';
-import { auth, logIn, signUp } from '../Redux/actions/AuthAction';
+import { auth, logIn, signUp, error } from '../Redux/actions/AuthAction';
 
 
 const Auth = () => {
@@ -13,6 +13,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const athdata = useSelector(state => state.auth.authdata);
+  const errorAlert = useSelector(state => state.error);
   const [islogin, setIslogin] = useState(true)
 
   const [formData, setFormData] = useState({
@@ -60,6 +61,7 @@ const Auth = () => {
     }
 
     clear();
+    console.log(errorAlert, "error log")
   }
 
   const clear = () => {
@@ -74,7 +76,7 @@ const Auth = () => {
   return (
       <form onSubmit={handleSubmit} className="loginform">
         <h2 className="text-center my-4">{islogin ? "LOG IN":"SIGN UP" }</h2>
-        
+        <p style={{color: "red"}}>{errorAlert}</p>
         {
           !islogin && (
             <>

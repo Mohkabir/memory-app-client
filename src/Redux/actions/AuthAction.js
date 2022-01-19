@@ -1,5 +1,6 @@
 import * as actiontypes from "../actionTypes";
 import { loginApi, signupApi } from "../../Api/index";
+import { setError } from "./Error";
 
 
 
@@ -23,6 +24,7 @@ export const logout = () => {
 
 
 export const logIn = (FormData, history) => async(dispatch) => {
+  
   try {
     const { data } = await loginApi(FormData);
     dispatch({
@@ -33,7 +35,8 @@ export const logIn = (FormData, history) => async(dispatch) => {
     
     window.location.reload();
   } catch (error) {
-    console.log("log in error", error.msg);
+    dispatch(setError(error?.response?.data.msg))
+    console.log(error?.response?.data.msg);
   }
 }
 
