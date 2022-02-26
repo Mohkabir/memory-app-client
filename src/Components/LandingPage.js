@@ -14,6 +14,12 @@ const LandingPage = () => {
           <img className="hero" src={hero} alt="hero" />
           <div className="hero_text">
             <h3 className="mt-md-5">You Can Simply Create a Memory And Save.</h3>
+            <div className="alert alert-info text-left" >
+              <p><strong>Note:</strong> you can either sign up with a new account or make use of this login details for testing purpose</p>
+              <p><strong>username:</strong> test@gmail.com</p>
+              <p><strong>password:</strong> test</p>
+            </div>
+            
             <button className="btn">
             <Link to={user? "/home":"/auth"} className="p-2 rounded text-white text-decoration-none">Get Started...</Link>
             </button>

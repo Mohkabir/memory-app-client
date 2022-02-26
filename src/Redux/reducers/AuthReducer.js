@@ -1,5 +1,17 @@
 import * as actiontypes from "../actionTypes";
 
+
+export const loggedIn = (state = false, action) => {
+  switch (action.type) {
+    case actiontypes.APP_SET_LOGGED_IN:
+      return action.payload;
+    case actiontypes.APP_CLEAR:
+      return false;
+    default:
+      return state;
+  }
+};
+
 export const auth = (state = {authdata: null}, action) => {
   switch (action.type) {
     case actiontypes.AUTH :

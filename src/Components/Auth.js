@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+// import { history } from '../configureStore';
 import googlelogo from "../images/googlelogo.jpg";
 import GoogleLogin from 'react-google-login';
-// import Input from './Input';
-import { auth, logIn, signUp } from '../Redux/actions/AuthAction';
+import { auth, logIn, signUp, error } from '../Redux/actions/AuthAction';
 
 
 const Auth = () => {
-
+  
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
+
+  const location = useLocation();
   const athdata = useSelector(state => state.auth.authdata);
+  const errorAlert = useSelector(state => state.error);
+  const isLoggedIn = useSelector(state => state.loggedIn);
   const [islogin, setIslogin] = useState(true)
 
+
+  // useEffect(() => {
+  //   navigate("/home");
+  // }, [user])
+ 
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: ""
   })
-  
-
-  useEffect(() => {
-    if( athdata === "signedUp"){
-      //  setIslogin(!islogin);
-    }
-  }, [auth])
-
 
   const handleinput = (e) => {
     setFormData({...formData, [e.target.name] : e.target.value})
@@ -38,7 +40,7 @@ const Auth = () => {
 
     const profile = res?.profileObj;
     const token = res?.tokenId;
-    dispatch(auth({profile, token}, history));
+    dispatch(auth({profile, token}, navigate));
     
   } 
 
@@ -54,12 +56,13 @@ const Auth = () => {
     e.preventDefault()
 
     if(islogin){
-      dispatch(logIn(formData, history));
+      dispatch(logIn(formData ));
     }else{
-      dispatch(signUp(formData, history))
+      dispatch(signUp(formData, navigate))
     }
 
     clear();
+    console.log(errorAlert, "error log")
   }
 
   const clear = () => {
@@ -74,7 +77,7 @@ const Auth = () => {
   return (
       <form onSubmit={handleSubmit} className="loginform">
         <h2 className="text-center my-4">{islogin ? "LOG IN":"SIGN UP" }</h2>
-        
+        <p style={{color: "red"}}>{errorAlert}</p>
         {
           !islogin && (
             <>
