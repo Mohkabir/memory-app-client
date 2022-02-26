@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/actions/AuthAction';
 
@@ -9,7 +9,7 @@ const Head = () => {
 
   const isLogin = true;
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const auth = useSelector((state)=> state.auth);
 
@@ -21,7 +21,7 @@ const Head = () => {
 
   const logOut = () => {
     dispatch(logout());
-    window.location.reload();
+    navigate('/auth');
   }
 
 
@@ -42,8 +42,8 @@ const Head = () => {
             {
               user ?(
                 <div className="cursor-pointer">
-                  <span>{user?.profile?.givenName ? user?.profile?.givenName : userdata.result.name} </span>
-                  <img className="inline" style={{borderRadius: "50px", width:"50px"}} src={user.profile?.imageUrl ? user.profile.imageUrl : profile } alt={user?.givenName} />
+                  <span>{user?.profile?.givenName ? user?.profile?.givenName : userdata?.result?.name} </span>
+                  <img className="inline" style={{borderRadius: "50px", width:"50px"}} src={user?.profile?.imageUrl ? user.profile.imageUrl : profile } alt={user?.givenName} />
                 </div>
               ):""
             }

@@ -7,6 +7,9 @@ export const DELETE_POST = "DELETE_POST";
 export const LIKE_POST = "LIKE_POST";
 
 
+
+export const APP_CLEAR = "APP_CLEAR";
+export const APP_SET_LOGGED_IN = "APP_SET_LOGGED_IN";
 export const AUTH = "AUTH";
 export const LOG_OUT = "LOG_OUT";
 export const SIGN_UP = "SIGN_UP";

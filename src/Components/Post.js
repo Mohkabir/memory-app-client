@@ -17,7 +17,7 @@ const Post = ({post}) => {
         <img src={post.selectedFile} alt="img" className="w-100 h-100" />
         <div className="thumbnail">
           <small>{moment(post.createdAt).fromNow()}</small>   
-          <span className="" onClick={editPost}><i class="fas fa-edit"></i></span>
+          <span className="" onClick={editPost}><i className="fas fa-edit"></i></span>
         </div>
       </div>
       <div className="box2">
@@ -29,11 +29,11 @@ const Post = ({post}) => {
             style={{ cursor: "pointer"}} 
             className=" rounded text-xs" 
             onClick={() => dispatch(likePost(post._id))}>
-            <i class="fa fa-thumbs-up" style={{color:"blue"}} aria-hidden="true"></i>
+            <i className="fa fa-thumbs-up" style={{color:"blue"}} aria-hidden="true"></i>
             <small> Like {post.likes.length}</small>
           </div>
-          <small class="text-red-500 pointer text-xs" onClick={() => dispatch(deletePost(post._id))}>
-            <i class="far fa-trash-alt" style={{color:"red"}} ></i> Delete
+          <small className="text-red-500 pointer text-xs" onClick={() => dispatch(deletePost(post._id))}>
+            <i className="far fa-trash-alt" style={{color:"red"}} ></i> Delete
           </small>
         </div>
       </div>

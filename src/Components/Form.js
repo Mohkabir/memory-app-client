@@ -19,10 +19,9 @@ const Form = () => {
   })
 
   const [ imgname , setImagename] = useState(null);
-  
+
 
   useEffect(() => {
-    
     if(currentId){
       setformData(post)
     }else{
